@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.nuofankj.com/socket"
+            xmlns="http://www.nuofankj.com/socket"
+            elementFormDefault="qualified">
+
+    <xsd:element name="config">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="location" type="socket"/>
+                <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                    <xsd:element name="package" type="package"/>
+                </xsd:choice>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- package声明类型 -->
+    <xsd:complexType name="package">
+        <xsd:attribute name="name" type="xsd:string" use="required"/>
+    </xsd:complexType>
+
+    <!-- socket连接 -->
+    <xsd:complexType name="socket">
+        <!-- ip -->
+        <xsd:attribute name="ip" type="xsd:string" use="required"/>
+        <!-- port -->
+        <xsd:attribute name="port" type="xsd:string" use="required"/>
+
+    </xsd:complexType>
+</xsd:schema>
