@@ -10,5 +10,5 @@ services:
     expose:
       - "8080"
     command:
-      mvn install socket
+      mvn install com.nuofankj.socket
       mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
