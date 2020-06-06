@@ -54,7 +54,7 @@ public class NetServerOptions {
             serverOptions.sendBufferSize = 32 * 1024;
             serverOptions.reuseAddress = true;
             serverOptions.backLog = 1024;
-            serverOptions.listenPort = 8005;
+            serverOptions.listenPort = 8080;
             serverOptions.webSocketPath = "/websocket";
         }
 
