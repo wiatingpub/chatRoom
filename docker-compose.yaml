@@ -5,8 +5,8 @@ services:
     build: .
     working_dir: ./
     volumes:
-      - chatRoom:/chatRoom
-      - socket:/socket
+      - chatRoom:./chatRoom
+      - socket:./socket
       - ~/.m2:/root/.m2
     expose:
       - "8080"
