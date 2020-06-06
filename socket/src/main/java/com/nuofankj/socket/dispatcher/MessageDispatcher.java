@@ -1,33 +1,19 @@
 package com.nuofankj.socket.dispatcher;
 
-import com.nuofankj.socket.protocol.Packet;
-import com.nuofankj.socket.server.MessageBean;
-import io.netty.util.internal.logging.InternalLogger;
-import io.netty.util.internal.logging.InternalLoggerFactory;
+import com.nuofankj.socket.dispatcher.bean.MessageBean;
 
-import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author xifanxiaxue
- * @date 2/8/20
- * @desc
+ * @date 2020/6/2 8:13
+ * @desc 协议分发
  */
-public interface MessageDispatcher {
+public class MessageDispatcher {
 
-    InternalLogger log = InternalLoggerFactory.getInstance(MessageDispatcher.class);
-
-    default void messageReceived(NetConnection netConnection, MessageBean messageBean, Packet packet) {
-
-        try {
-            Method method = messageBean.getMethod();
-            method.setAccessible(true);
-            method.invoke(messageBean.getBean(), netConnection, packet);
-        } catch (Exception e) {
-            log.error(netConnection.toString());
-        }
-    }
-
-    void channelOpened(NetConnection netConnection);
-
-    void channelClosed(NetConnection netConnection);
+    /**
+     * 协议id->MessageBean
+     */
+    public static Map<Integer, MessageBean> id2MessageBeanMap = new HashMap<>();
 }

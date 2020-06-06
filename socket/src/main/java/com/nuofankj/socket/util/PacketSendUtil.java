@@ -1,34 +1,36 @@
 package com.nuofankj.socket.util;
 
-import com.nuofankj.socket.dispatcher.NetConnection;
-import com.nuofankj.socket.protocol.Packet;
-import com.nuofankj.socket.server.ServerManager;
+import com.alibaba.fastjson.JSON;
+import com.nuofankj.socket.manager.ChannelManager;
+import com.nuofankj.socket.manager.ChannelSession;
+import com.nuofankj.socket.proto.AbstractMessage;
+import io.netty.channel.Channel;
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame;
 
-import java.util.List;
+import java.util.Map;
 
 /**
  * @author xifanxiaxue
- * @date 2/9/20
- * @desc
+ * @date 2020/6/3 8:09
+ * @desc 协议推送工具
  */
 public class PacketSendUtil {
 
-    public static void sendPacket(NetConnection connection, Packet packet) {
-        connection.sendMessage(packet);
+    /**
+     * 给session推送协议
+     *
+     * @param session
+     * @param message
+     */
+    public static void sendMessage(ChannelSession session, AbstractMessage message) {
+        session.getChannel().writeAndFlush(new TextWebSocketFrame(JSON.toJSONString(message)));
     }
 
-    public static void sendToAll(Packet packet) {
-        List<NetConnection> allConnections = ServerManager.getAllConnections();
-        for (NetConnection netConnection : allConnections) {
-            netConnection.sendMessage(packet);
-        }
-    }
-
-    public static void sendToAllNotSelf(NetConnection connection, Packet packet) {
-        List<NetConnection> allConnections = ServerManager.getAllConnections();
-        for (NetConnection netConnection : allConnections) {
-            if (connection != netConnection) {
-                netConnection.sendMessage(packet);
+    public static void broadcastMessage(AbstractMessage message) {
+        for (Map.Entry<Channel, ChannelSession> sessionEntry : ChannelManager.sessionMap.entrySet()) {
+            ChannelSession targetSession = sessionEntry.getValue();
+            if (targetSession.isAuth()) {
+                sendMessage(targetSession, message);
             }
         }
     }
