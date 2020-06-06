@@ -9,4 +9,6 @@ services:
       - ~/.m2:/root/.m2
     expose:
       - "8080"
-    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+    command:
+      mvn install socket
+      mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
