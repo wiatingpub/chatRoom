@@ -3,10 +3,9 @@ services:
   app:
     restart: always
     build: .
-    working_dir: ./
+    working_dir: /chatRoom
     volumes:
-      - chatRoom:./chatRoom/chatRoom
-      - socket:./chatRoom/socket
+      - .:/chatRoom
       - ~/.m2:/root/.m2
     expose:
       - "8080"
