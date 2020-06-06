@@ -3,7 +3,7 @@ services:
   app:
     restart: always
     build: .
-    working_dir: /chatRoom
+    working_dir: /chatRoom/chatRoom
     volumes:
       - .:/chatRoom
       - ~/.m2:/root/.m2
