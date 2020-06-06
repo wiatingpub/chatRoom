@@ -4,11 +4,7 @@ case "$1" in
         nohup sudo docker-compose up &
     ;;
     stop)
-        docker stop $Container
-    ;;
-    remove)
-        docker stop $Container
-        docker rm $Container
+        docker sudo docker-compose down
     ;;
     login)
         docker exec -it $Container /bin/bash
