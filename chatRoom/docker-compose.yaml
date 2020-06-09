@@ -8,5 +8,5 @@ services:
       - .:/chatRoom
       - ~/.m2:/root/.m2
     expose:
-      - "8080"
+      - "9090"
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
