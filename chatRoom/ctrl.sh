@@ -7,6 +7,7 @@ case "$1" in
     ;;
     start)
         nohup sudo docker-compose up > chatRoom.log 2>&1 &
+        tailf chatRoom.log
     ;;
     stop)
         sudo docker-compose down
