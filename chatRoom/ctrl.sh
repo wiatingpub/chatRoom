@@ -9,7 +9,7 @@ case "$1" in
         nohup sudo docker-compose up > chatRoom.log 2>&1 &
     ;;
     stop)
-        docker sudo docker-compose down
+        sudo docker-compose down
     ;;
     login)
         docker exec -it $Container /bin/bash
