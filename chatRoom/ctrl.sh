@@ -4,7 +4,7 @@ case "$1" in
         cd ../lib/socket
         mvn install
         cd ../../chatRoom/
-        cp ./conf.d/* /home/ubuntu/proj/nginx-center/conf.d/*
+        cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
     ;;
     start)
         nohup sudo docker-compose up > chatRoom.log 2>&1 &
