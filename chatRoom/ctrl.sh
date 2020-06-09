@@ -1,10 +1,10 @@
 #!/bin/sh
 case "$1" in
     build)
-        cp ./conf.d/* /home/ubuntu/proj/nginx-center/conf.d/*
         cd ../lib/socket
         mvn install
         cd ../../chatRoom/
+        cp ./conf.d/* /home/ubuntu/proj/nginx-center/conf.d/*
     ;;
     start)
         nohup sudo docker-compose up > chatRoom.log 2>&1 &
