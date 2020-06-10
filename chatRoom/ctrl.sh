@@ -2,9 +2,9 @@
 case "$1" in
     build)
         cd ../lib/socket
-        sudo mvn install
+        mvn install
         cd ../../chatRoom/
-        sudo cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
+        cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
     ;;
     start)
         nohup sudo docker-compose up > chatRoom.log 2>&1 &
