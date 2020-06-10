@@ -11,3 +11,9 @@ services:
     expose:
       - "9090"
     command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+    networks:
+      - default
+      - nginx_net
+networks:
+  nginx_net:
+    external: true
