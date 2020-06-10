@@ -2,7 +2,7 @@
 case "$1" in
     build)
         cd ../lib/socket
-        mvn install
+        sudo mvn install
         cd ../../chatRoom/
         cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
     ;;
