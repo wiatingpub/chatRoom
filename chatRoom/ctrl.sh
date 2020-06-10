@@ -1,6 +1,6 @@
 #!/bin/sh
 
-$Container='chatroom'
+Container="chatroom"
 
 case "$1" in
 build)
