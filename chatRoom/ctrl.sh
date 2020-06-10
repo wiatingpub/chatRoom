@@ -1,4 +1,5 @@
 #!/bin/sh
+$Container='chatroom'
 case "$1" in
 build)
   cd ../lib/socket
