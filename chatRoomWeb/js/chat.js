@@ -52,7 +52,7 @@ function userLogin() {
             window.WebSocket = window.MozWebSocket;
         }
         if (window.WebSocket) {
-            window.socket = new WebSocket("ws://localhost:8005/websocket");
+            window.socket = new WebSocket("ws://chatroom.lixifan.cn:8005/websocket");
             window.socket.onmessage = function (event) {
                 var data = eval("(" + event.data + ")");
                 console.log("onmessage data: " + JSON.stringify(data));
