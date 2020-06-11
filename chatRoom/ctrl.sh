@@ -9,8 +9,8 @@ build)
   mvn install
   cd ../../chatRoom/
   sudo rm -rf target
-  cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
-  sudo cp -r ../chatRoomWeb/* /home/ubuntu/proj/nginx-center/html/chatRoomWeb
+  sudo cp ./conf.d/chatRoom.conf /home/ubuntu/proj/nginx-center/conf.d/chatRoom.conf
+  sudo cp -r ../chatRoomWeb /home/ubuntu/proj/nginx-center/html/chatRoomWeb
   ;;
 start)
   nohup sudo docker-compose up >chatRoom.log 2>&1 &
