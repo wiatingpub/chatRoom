@@ -28,7 +28,8 @@ http://chatroom.lixifan.cn/index.html
 #### ide如何启动
 
 - idea导入chatRoom工程，点击File->Project Structure->点击Modules内的+导入lib下的socket组件
-- 点击启动即可，监听的端口可以修改resources下的application.properties
+- 点击启动即可服务端，监听的端口可以修改resources下的application.properties
+- 客户端相关的放在chatRoomWeb下，直接访问即可
 
 #### 外网部署
 
