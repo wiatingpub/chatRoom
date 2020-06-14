@@ -81,7 +81,7 @@ public class WebSocketServer implements SmartInitializingSingleton {
         serverBootstrap.childOption(ChannelOption.SO_RCVBUF, serverOptions.getReceiveBufferSize());
         serverBootstrap.childOption(ChannelOption.SO_SNDBUF, serverOptions.getSendBufferSize());
         serverBootstrap.childHandler(createNetServerChannelInitializer(serverOptions.getWebSocketPath()));
-        
+
         listen();
     }
 
@@ -90,14 +90,6 @@ public class WebSocketServer implements SmartInitializingSingleton {
         return new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel ch) {
-                DefaultEventLoopGroup defLoopGroup = new DefaultEventLoopGroup(Runtime.getRuntime().availableProcessors(), new ThreadFactory() {
-                    private AtomicInteger index = new AtomicInteger(0);
-
-                    @Override
-                    public Thread newThread(Runnable r) {
-                        return new Thread(r, "DEFAULT_EVENT_LOOP_GROUP_" + index.incrementAndGet());
-                    }
-                });
                 ChannelPipeline pipeline = ch.pipeline();
                 pipeline.addLast(new HttpServerCodec());
                 pipeline.addLast(new HttpObjectAggregator(64 * 1024));
