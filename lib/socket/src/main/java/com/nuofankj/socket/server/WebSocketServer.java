@@ -23,8 +23,6 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author xifanxiaxue
@@ -134,11 +132,7 @@ public class WebSocketServer implements SmartInitializingSingleton {
     private boolean isLinux() {
 
         String osName = System.getProperty("os.name");
-        if (osName != null && osName.toLowerCase().contains("linux")) {
-            return true;
-        }
-
-        return false;
+        return osName != null && osName.toLowerCase().contains("linux");
     }
 }
 
