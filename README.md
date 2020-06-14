@@ -14,15 +14,15 @@ http://chatroom.lixifan.cn/index.html
 
 #### 界面表现
 大概说说界面表现的东西，随便写的html页面。
-![](3365849-0c41a1abaf94356c.png)
+![](img/3365849-0c41a1abaf94356c.png)
 
 登陆界面，这里开了两个端，输入昵称即可登陆，之后开始聊天
 
-![](3365849-10a198ed4071746e.png)
+![](img/3365849-10a198ed4071746e.png)
 
 下线后的表现如下
 
-![](3365849-59b5ca88f78c71c2.png)
+![](img/3365849-59b5ca88f78c71c2.png)
 下线后便监听到啦
 
 #### ide如何启动
@@ -34,4 +34,4 @@ http://chatroom.lixifan.cn/index.html
 
 可以关注公众号向我咨询
 
-![公众号.jpg](16aff62fa6acf090)
+![公众号.jpg](img/16aff62fa6acf090)
