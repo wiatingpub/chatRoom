@@ -93,7 +93,7 @@ public class WebSocketServer implements SmartInitializingSingleton {
                 pipeline.addLast(new HttpObjectAggregator(64 * 1024));
                 // 设计思路是，服务器在一定时间内发现连接读空闲，则再移除对应的channel，当然了客户端也要定时推送pong数据过来
                 pipeline.addLast(new IdleStateHandler(60, 0, 0));
-                pipeline.addLast(new AuthHandler(webSocketPath, applicationEventPublisher));
+                pipeline.addLast(new AuthHandler(applicationEventPublisher));
                 // WebSocketServerProtocolHandler 处理了所有委托管理的 WebSocket 帧类型以 及升级握手本身。如果握手成功，那么所需的ChannelHandler将会被添加到ChannelPipeline 中，而那些不再需要的ChannelHandler则将会被移除
                 pipeline.addLast(new WebSocketServerProtocolHandler(webSocketPath));
                 pipeline.addLast(new MessageHandler(applicationEventPublisher));

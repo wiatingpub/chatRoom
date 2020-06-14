@@ -20,10 +20,8 @@ import org.springframework.context.ApplicationEventPublisher;
 public class AuthHandler extends SimpleChannelInboundHandler<FullHttpRequest> {
 
     private ApplicationEventPublisher applicationEventPublisher;
-    private String webSocketPath;
 
-    public AuthHandler(String webSocketPath, ApplicationEventPublisher applicationEventPublisher) {
-        this.webSocketPath = webSocketPath;
+    public AuthHandler(ApplicationEventPublisher applicationEventPublisher) {
         this.applicationEventPublisher = applicationEventPublisher;
     }
 
