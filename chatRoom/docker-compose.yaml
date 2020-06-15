@@ -14,6 +14,9 @@ services:
     networks:
       - default
       - nginx_net
+    environment:
+      - TZ=Asia/Shanghai
 networks:
   nginx_net:
     external: true
+    
