@@ -2,7 +2,6 @@ package com.nuofankj.socket.manager;
 
 import com.nuofankj.socket.util.NettyUtil;
 import io.netty.channel.Channel;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.ConcurrentHashMap;
@@ -37,7 +36,7 @@ public class ChannelManager {
 
     public static ChannelSession removeChannel(Channel channel) {
         ChannelSession channelSession = sessionMap.remove(channel);
-        if (channelSession != null) {
+        if (channelSession != null && channelSession.isAuth()) {
             log.info("移除连接:[{}-{}]，当前连接个数:{}", channelSession.getNickName(), channelSession.getChannelId(), sessionCount.get());
             sessionCount.decrementAndGet();
         }
@@ -63,7 +62,7 @@ public class ChannelManager {
      */
     public static boolean activeSession(Channel channel, String nickName) {
         ChannelSession channelSession = ChannelManager.getChannelSession(channel);
-        if (channelSession == null) {
+        if (channelSession == null || channelSession.isAuth()) {
             return false;
         }
 
