@@ -73,7 +73,7 @@ public class ChannelManager {
         channelSession.setTime(System.currentTimeMillis());
         channelSession.updateChannelId();
 
-        log.info("激活连接:[{}-{}]", nickName, channelSession.getChannelId());
+        log.info("激活连接:[{}-{}]，当前链接个数：{}", nickName, channelSession.getChannelId(), sessionCount.get());
         return true;
     }
 
