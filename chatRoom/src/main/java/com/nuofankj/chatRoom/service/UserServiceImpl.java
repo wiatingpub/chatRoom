@@ -23,6 +23,6 @@ public class UserServiceImpl implements UserService {
         PacketSendUtil.sendMessage(session, new LoginSuccessMessage(isAuth));
 
         PacketSendUtil.broadcastMessage(new SysUserCountMessage(ChannelManager.getActiveUserCount(), nickName, ChatRoomConstant.JOIN_ACTION));
-        log.info("用户：[{}-{}]登陆成功", session.getChannelId(), session.getNickName());
+        log.info("用户：[{}-{}]登陆成功，校验状态：{}, 推送激活的链接个数：{}", session.getChannelId(), session.getNickName(), isAuth, ChannelManager.getActiveUserCount());
     }
 }
