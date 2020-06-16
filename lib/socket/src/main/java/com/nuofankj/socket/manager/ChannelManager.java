@@ -31,13 +31,13 @@ public class ChannelManager {
         channelSession.setChannel(channel);
         channelSession.setTime(System.currentTimeMillis());
         sessionMap.put(channel, channelSession);
-        log.info("添加地址:{}的连接", channelSession.getAddress());
+        log.info("添加地址:{}的连接，当前连接个数：{}", channelSession, sessionMap.size());
     }
 
     public static ChannelSession removeChannel(Channel channel) {
         ChannelSession channelSession = sessionMap.remove(channel);
         if (channelSession != null && channelSession.isAuth()) {
-            log.info("移除连接:[{}-{}]，当前连接个数:{}", channelSession.getNickName(), channelSession.getChannelId(), sessionCount.get());
+            log.info("移除连接:[{}-{}]，当前连接个数:{},channelSession:{}", channelSession.getNickName(), channelSession.getChannelId(), sessionCount.get(), channelSession);
             sessionCount.decrementAndGet();
         }
         return channelSession;
@@ -73,7 +73,7 @@ public class ChannelManager {
         channelSession.setTime(System.currentTimeMillis());
         channelSession.updateChannelId();
 
-        log.info("激活连接:[{}-{}]，当前链接个数：{}", nickName, channelSession.getChannelId(), sessionCount.get());
+        log.info("激活连接:[{}-{}]，当前链接个数：{}，激活的连接个数：{}", nickName, channelSession.getChannelId(), sessionMap.size(), sessionCount.get());
         return true;
     }
 
